@@ -136,19 +136,19 @@
             <div class="grid grid-cols-2 gap-2 items-center max-w-3xl mx-auto w-full px-1 mt-1">
                 <div onclick="startCategoryGame('math')" class="bg-gradient-to-br from-blue-500 to-indigo-600 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center">
                     <span class="text-base">🏰</span>
-                    <h3 class="font-black text-xs text-amber-200">مدينة الرياضيات</h3>
+                    <h3 class="font-black text-xs text-amber-200">مدينة الرياضيات (20 سؤالاً)</h3>
                 </div>
                 <div onclick="startCategoryGame('arabic')" class="bg-gradient-to-br from-rose-500 to-pink-600 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center">
                     <span class="text-base">📖</span>
-                    <h3 class="font-black text-xs text-amber-200">حديقة العربي</h3>
+                    <h3 class="font-black text-xs text-amber-200">حديقة العربي (20 سؤالاً)</h3>
                 </div>
                 <div onclick="startCategoryGame('animals')" class="bg-gradient-to-br from-amber-500 to-orange-600 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center">
                     <span class="text-base">🦁</span>
-                    <h3 class="font-black text-xs text-amber-200">عالم الحيوان</h3>
+                    <h3 class="font-black text-xs text-amber-200">عالم الحيوان (20 سؤالاً)</h3>
                 </div>
                 <div onclick="startCategoryGame('smart')" class="bg-gradient-to-br from-purple-600 to-violet-700 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center">
                     <span class="text-base">🏝️</span>
-                    <h3 class="font-black text-xs text-amber-200">جزيرة الذكاء</h3>
+                    <h3 class="font-black text-xs text-amber-200">جزيرة الذكاء (20 سؤالاً)</h3>
                 </div>
             </div>
 
@@ -473,16 +473,116 @@
         }
 
         const categoriesData = {
-            math: { title: "مدينة الرياضيات", questions: [{ question: "3 + 2 = ?", options: [4, 5, 6], answer: 5, hint: "3 زائد 2 يساوي 5" }] },
-            arabic: { title: "حديقة العربي", questions: [{ question: "أول حرف في كلمة (أَسَد) هو:", options: ["ب", "أ", "م"], answer: "أ", hint: "ألف أسد" }] },
-            animals: { title: "عالم الحيوان", questions: [{ question: "من هو ملك الغابة؟", options: ["الأسد", "الفيل", "القرد"], answer: "الأسد", hint: "الأسد القوي" }] },
-            smart: { title: "جزيرة الذكاء", questions: [{ question: "عدد أيام الأسبوع كام؟", options: [5, 6, 7], answer: 7, hint: "7 أيام" }] }
+            math: {
+                title: "مدينة الرياضيات",
+                questions: [
+                    { question: "3 + 2 = ?", options: ["4", "5", "6", "7"], answer: "5", hint: "3 زائد 2 يساوي 5" },
+                    { question: "4 + 4 = ?", options: ["6", "7", "8", "9"], answer: "8", hint: "4 زائد 4 يساوي 8" },
+                    { question: "5 - 2 = ?", options: ["2", "3", "4", "5"], answer: "3", hint: "5 ناقص 2 يساوي 3" },
+                    { question: "10 - 5 = ?", options: ["3", "4", "5", "6"], answer: "5", hint: "نصف العشرة هو 5" },
+                    { question: "6 + 3 = ?", options: ["8", "9", "10", "11"], answer: "9", hint: "6 زائد 3 يساوي 9" },
+                    { question: "7 - 1 = ?", options: ["5", "6", "7", "8"], answer: "6", hint: "7 ناقص 1 يساوي 6" },
+                    { question: "2 + 2 = ?", options: ["3", "4", "5", "6"], answer: "4", hint: "2 زائد 2 يساوي 4" },
+                    { question: "8 - 4 = ?", options: ["2", "3", "4", "5"], answer: "4", hint: "نصف الثمانية هو 4" },
+                    { question: "1 + 1 = ?", options: ["1", "2", "3", "4"], answer: "2", hint: "1 زائد 1 يساوي 2" },
+                    { question: "9 - 3 = ?", options: ["5", "6", "7", "8"], answer: "6", hint: "9 ناقص 3 يساوي 6" },
+                    { question: "5 + 5 = ?", options: ["8", "9", "10", "12"], answer: "10", hint: "5 زائد 5 يساوي 10" },
+                    { question: "6 - 2 = ?", options: ["3", "4", "5", "6"], answer: "4", hint: "6 ناقص 2 يساوي 4" },
+                    { question: "3 + 3 = ?", options: ["5", "6", "7", "8"], answer: "6", hint: "3 زائد 3 يساوي 6" },
+                    { question: "7 - 3 = ?", options: ["3", "4", "5", "6"], answer: "4", hint: "7 ناقص 3 يساوي 4" },
+                    { question: "4 + 5 = ?", options: ["8", "9", "10", "11"], answer: "9", hint: "4 زائد 5 يساوي 9" },
+                    { question: "10 - 2 = ?", options: ["6", "7", "8", "9"], answer: "8", hint: "10 ناقص 2 يساوي 8" },
+                    { question: "2 + 3 = ?", options: ["4", "5", "6", "7"], answer: "5", hint: "2 زائد 3 يساوي 5" },
+                    { question: "8 - 5 = ?", options: ["2", "3", "4", "5"], answer: "3", hint: "8 ناقص 5 يساوي 3" },
+                    { question: "1 + 4 = ?", options: ["4", "5", "6", "7"], answer: "5", hint: "1 زائد 4 يساوي 5" },
+                    { question: "9 - 4 = ?", options: ["4", "5", "6", "7"], answer: "5", hint: "9 ناقص 4 يساوي 5" }
+                ]
+            },
+            arabic: {
+                title: "حديقة العربي",
+                questions: [
+                    { question: "أول حرف في كلمة (أَسَد) هو:", options: ["ب", "أ", "م", "ت"], answer: "أ", hint: "ألف أسد" },
+                    { question: "حرف الميم في كلمة (مَوْز) يبدأ بـ:", options: ["م", "أ", "ب", "ل"], answer: "م", hint: "موز تبدأ بالميم" },
+                    { question: "جمع كلمة (كتاب) هو:", options: ["كتب", "كاتب", "مكتب", "كتابان"], answer: "كتب", hint: "جمع كتاب كتب" },
+                    { question: "مضاد كلمة (كبير) هو:", options: ["صغير", "واسع", "قصير", "جميل"], answer: "صغير", hint: "عكس كبير صغير" },
+                    { question: "كلمة (تفاحة) تبدأ بحرف:", options: ["ت", "ب", "ف", "ح"], answer: "ت", hint: "تبدأ بالتاء" },
+                    { question: "الحرف الذي يأتي بعد (ب) هو:", options: ["أ", "ت", "ث", "ج"], answer: "ت", hint: "أ، ب، ت" },
+                    { question: "مفرد كلمة (أقلام) هو:", options: ["قلم", "قلعة", "قيم", "قائم"], answer: "قلم", hint: "مفرد أقلام قلم" },
+                    { question: "كلمة (شمس) تبدأ بحرف:", options: ["س", "ش", "م", "ب"], answer: "ش", hint: "تبدأ بالشين" },
+                    { question: "نوع كلمة (محمد) هو:", options: ["مذكر", "مؤنث", "جمع", "حرف"], answer: "مذكر", hint: "محمد مذكر" },
+                    { question: "حرف الجر في جملة (أذهب إلى المدرسة):", options: ["أذهب", "إلى", "المدرسة", "أنا"], answer: "إلى", hint: "كلمة إلى هي حرف جر" },
+                    { question: "عكس كلمة (نظيف) هو:", options: ["جميل", "متسخ", "سريع", "كبير"], answer: "متسخ", hint: "عكس نظيف متسخ" },
+                    { question: "جمع كلمة (طالب) هو:", options: ["طلاب", "مكتبة", "كتاب", "طالبات"], answer: "طلاب", hint: "جمع طالب طلاب" },
+                    { question: "أول حرف في كلمة (قلم) هو:", options: ["ق", "ل", "م", "ب"], answer: "ق", hint: "تبدأ بالقاف" },
+                    { question: "كلمة (سماء) تبدأ بحرف:", options: ["س", "ش", "م", "ب"], answer: "س", hint: "تبدأ بالسين" },
+                    { question: "مضاد كلمة (طويل) هو:", options: ["قصير", "صغير", "جميل", "سريع"], answer: "قصير", hint: "عكس طويل قصير" },
+                    { question: "جمع كلمة (بيت) هو:", options: ["بيوت", "كاتب", "مكتب", "بيتان"], answer: "بيوت", hint: "جمع بيت بيوت" },
+                    { question: "كلمة (زرافة) تبدأ بحرف:", options: ["ز", "س", "ش", "د"], answer: "ز", hint: "تبدأ بالزاي" },
+                    { question: "كلمة (بطة) تبدأ بحرف:", options: ["ب", "ت", "ث", "ج"], answer: "ب", hint: "تبدأ بالباء" },
+                    { question: "نوع كلمة (فاطمة) هو:", options: ["مؤنث", "مذكر", "جمع", "حرف"], answer: "مؤنث", hint: "فاطمة مؤنث" },
+                    { question: "الحرف الأخير في الأبجدية هو:", options: ["أ", "ي", "و", "م"], answer: "ي", hint: "حرف الياء" }
+                ]
+            },
+            animals: {
+                title: "عالم الحيوان",
+                questions: [
+                    { question: "من هو ملك الغابة؟", options: ["الأسد", "الفيل", "القرد", "الأرنب"], answer: "الأسد", hint: "الأسد القوي" },
+                    { question: "حيوان طويل الرقبة يأكل أوراق الشجر:", options: ["الزرافة", "الحصان", "القط", "الكلب"], answer: "الزرافة", hint: "الزرافة الطويلة" },
+                    { question: "حيوان ضخم جداً وله زلومة:", options: ["الفيل", "الأسد", "النمور", "القطط"], answer: "الفيل", hint: "الفيل الكبير" },
+                    { question: "حيوان يحب أكل الجزر:", options: ["الأرنب", "الأسد", "الذئب", "البقرة"], answer: "الأرنب", hint: "الأرنب السريع" },
+                    { question: "حيوان يعطينا الحليب المفيد:", options: ["البقرة", "الأسد", "النمر", "السمك"], answer: "البقرة", hint: "البقرة الطيبة" },
+                    { question: "حيوان أليف يقول مياو ويحب اللبن:", options: ["القطة", "الكلب", "الأسد", "الفيل"], answer: "القطة", hint: "القطة الكيوت" },
+                    { question: "حيوان يحرس المنزل ويقول هوه هوه:", options: ["الكلب", "القط", "العصفور", "الخروف"], answer: "الكلب", hint: "الكلب الوفي" },
+                    { question: "حيوان سفينة الصحراء:", options: ["الجمل", "الفيل", "الحصان", "الأرنب"], answer: "الجمل", hint: "الجمل الصبور" },
+                    { question: "طائر يحب الثلج والسباحة:", options: ["البطريق", "العصفور", "النسر", "الحمام"], answer: "البطريق", hint: "البطريق اللطيف" },
+                    { question: "حشرة تصنع العسل اللذيذ:", options: ["النحلة", "الذباب", "البعوض", "النمل"], answer: "النحلة", hint: "النحلة النشيطة" },
+                    { question: "أسرع حيوان بري في العالم:", options: ["الفهد", "السلحفاة", "الفيل", "الدب"], answer: "الفهد", hint: "الفهد السريع" },
+                    { question: "حيوان بطيء وله صدفة قوية:", options: ["السلحفاة", "الأرنب", "الفهد", "الغزال"], answer: "السلحفاة", hint: "السلحفاة البطيئة" },
+                    { question: "حيوان يعطينا الصوف الناعم:", options: ["الخروف", "الكلب", "القط", "النمر"], answer: "الخروف", hint: "الخروف الطيب" },
+                    { question: "طائر يغرد بصوت جميل فوق الشجر:", options: ["العصفور", "الأسد", "الفيل", "السمكة"], answer: "العصفور", hint: "العصفور المغرد" },
+                    { question: "حيوان يغير لون جسمه للاختباء:", options: ["الحرباء", "الأسد", "الأرنب", "الكلب"], answer: "الحرباء", hint: "الحرباء المتلونة" },
+                    { question: "حيوان ذكي وماكر في الغابة:", options: ["الثعلب", "الفيل", "البقرة", "الأرنب"], answer: "الثعلب", hint: "الثعلب الماكر" },
+                    { question: "حيوان يحب القفز وأكل الموز:", options: ["القرد", "الأسد", "الكلب", "السمكة"], answer: "القرد", hint: "القرد الشقي" },
+                    { question: "حيوان ضخم يعيش في القطب الشمالي الثلجي:", options: ["الدب القطبي", "الأسد", "القرد", "الفيل"], answer: "الدب القطبي", hint: "الدب القطبي" },
+                    { question: "حيوان له خطوط سوداء وبيضاء:", options: ["الحمار الوحشي", "الحصان", "البقرة", "الخروف"], answer: "الحمار الوحشي", hint: "الحمار الوحشي" },
+                    { question: "حيوان سريع وقوي يمتطيه الفرسان:", options: ["الحصان", "القط", "الكلب", "الأرنب"], answer: "الحصان", hint: "الحصان الأصيل" }
+                ]
+            },
+            smart: {
+                title: "جزيرة الذكاء",
+                questions: [
+                    { question: "كم عدد أيام الأسبوع؟", options: ["5", "6", "7", "8"], answer: "7", hint: "7 أيام في الأسبوع" },
+                    { question: "ما هو لون السماء الصافية؟", options: ["أزرق", "أحمر", "أسود", "أخضر"], answer: "أزرق", hint: "لون السماء أزرق" },
+                    { question: "في أي دولة عربية نعيش؟", options: ["مصر", "فرنسا", "اليابان", "إيطاليا"], answer: "مصر", hint: "نحن في مصر أم الدنيا" },
+                    { question: "كم عدد أصابع اليد الواحدة؟", options: ["3", "4", "5", "10"], answer: "5", hint: "5 أصابع" },
+                    { question: "فصل تكون فيه الشمس حارة جداً:", options: ["الصيف", "الشتاء", "الربيع", "الخريف"], answer: "الصيف", hint: "فصل الصيف" },
+                    { question: "كم عدد فصول السنة؟", options: ["2", "3", "4", "5"], answer: "4", hint: "4 فصول" },
+                    { question: "ما هو لون اللبن الطبيعي؟", options: ["أبيض", "أسود", "أحمر", "أزرق"], answer: "أبيض", hint: "اللبن أبيض" },
+                    { question: "ما هو الكوكب الذي نعيش عليه؟", options: ["الأرض", "المريخ", "زحل", "المشترى"], answer: "الأرض", hint: "كوكب الأرض" },
+                    { question: "العضو المسؤول عن الرؤية في جسم الإنسان:", options: ["العين", "الأذن", "الأنف", "الفم"], answer: "العين", hint: "نرى بأعيننا" },
+                    { question: "العضو المسؤول عن السمع:", options: ["الأذن", "العين", "اليد", "الرجل"], answer: "الأذن", hint: "نسمع بآذاننا" },
+                    { question: "كم عدد عيون الإنسان؟", options: ["1", "2", "3", "4"], answer: "2", hint: "عينان اثنتان" },
+                    { question: "متى تشرق الشمس؟", options: ["الصباح", "الليل", "المساء", "منتصف الليل"], answer: "الصباح", hint: "تشرق صباحاً" },
+                    { question: "ما الذي ينور لنا الليل في السماء؟", options: ["القمر", "الشمس", "السيارة", "الشجرة"], answer: "القمر", hint: "القمر المنير" },
+                    { question: "كم عدد ألوان علم مصر؟", options: ["3", "4", "5", "2"], answer: "3", hint: "3 ألوان" },
+                    { question: "فصل تسقط فيه أوراق الشجر:", options: ["الخريف", "الربيع", "الصيف", "الشتاء"], answer: "الخريف", hint: "فصل الخريف" },
+                    { question: "ما هي عاصمة مصر؟", options: ["القاهرة", "الإسكندرية", "أسوان", "الجيزة"], answer: "القاهرة", hint: "مدينة القاهرة" },
+                    { question: "ما الذي نحمله وقت نزول المطر؟", options: ["الشمسية (المظلة)", "الكتاب", "القلم", "الحقيبة"], answer: "الشمسية (المظلة)", hint: "الشمسية تحمينا من المطر" },
+                    { question: "وسيلة تنقل تسير على السكك الحديدية:", options: ["القطار", "الطيارة", "السيارة", "المركب"], answer: "القطار", hint: "القطار السريع" },
+                    { question: "كم عدد أرجل الحشرات مثل النحلة؟", options: ["6", "4", "2", "8"], answer: "6", hint: "6 أرجل" },
+                    { question: "في أي وقت تظهر النجوم في السماء؟", options: ["الليل", "الصباح", "الظهر", "العصر"], answer: "الليل", hint: "تظهر ليلاً" }
+                ]
+            }
         };
 
-        let activeCategory = 'math', currentQuestionIndex = 0;
+        let activeCategory = 'math';
+        let currentQuestionIndex = 0;
+        let isAnswerLocked = false;
 
         function startCategoryGame(categoryKey) {
-            activeCategory = categoryKey; currentQuestionIndex = 0;
+            activeCategory = categoryKey;
+            currentQuestionIndex = 0;
+            isAnswerLocked = false;
             hideAllScreens();
             document.getElementById('screenGame').classList.remove('hidden');
             document.getElementById('screenGame').classList.add('flex');
@@ -490,8 +590,13 @@
         }
 
         function loadQuestion() {
+            isAnswerLocked = false;
             const cat = categoriesData[activeCategory];
-            if (currentQuestionIndex >= cat.questions.length) { endGame(); return; }
+            if (currentQuestionIndex >= cat.questions.length) {
+                endGame();
+                return;
+            }
+
             const q = cat.questions[currentQuestionIndex];
             document.getElementById('currentQNum').innerText = (currentQuestionIndex + 1) + ' / ' + cat.questions.length;
             document.getElementById('questionArea').innerText = q.question;
@@ -500,30 +605,54 @@
 
             const grid = document.getElementById('optionsGrid');
             grid.innerHTML = '';
+
             q.options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-black text-lg rounded-2xl shadow border-2 border-white";
+                btn.className = "py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-black text-lg rounded-2xl shadow border-2 border-white cursor-pointer hover:scale-105 transition";
                 btn.innerText = opt;
-                btn.onclick = () => {
-                    if (opt === q.answer) {
-                        btn.classList.add('bg-emerald-500', 'text-white');
-                        playSpeech("برافو", 'ar-EG');
-                        gameData.stars += 1; gameData.coins += 10; saveGame(); updateGlobalUI();
-                        setTimeout(() => { currentQuestionIndex++; loadQuestion(); }, 1200);
-                    } else {
-                        btn.classList.add('bg-rose-500', 'text-white', 'shake');
-                        setTimeout(() => btn.classList.remove('shake', 'bg-rose-500', 'text-white'), 400);
-                    }
+                btn.onclick = function() {
+                    checkAnswer(opt, q.answer, q.hint, this);
                 };
                 grid.appendChild(btn);
             });
+        }
+
+        function checkAnswer(selected, correct, hint, btnElement) {
+            if (isAnswerLocked) return;
+
+            const feedback = document.getElementById('feedbackMsg');
+            const isCorrect = String(selected).trim() === String(correct).trim();
+
+            if (isCorrect) {
+                isAnswerLocked = true;
+                btnElement.classList.remove('from-amber-400', 'to-amber-500');
+                btnElement.classList.add('bg-emerald-500', 'text-white');
+                feedback.innerHTML = '<span class="text-emerald-600 font-black">⭐ برافو عليك! إجابة صحيحة</span>';
+
+                gameData.stars += 1;
+                gameData.coins += 10;
+                saveGame();
+                updateGlobalUI();
+
+                const allButtons = document.querySelectorAll('#optionsGrid button');
+                allButtons.forEach(b => b.disabled = true);
+
+                setTimeout(function() {
+                    currentQuestionIndex++;
+                    loadQuestion();
+                }, 800);
+            } else {
+                btnElement.classList.add('bg-rose-500', 'text-white', 'shake');
+                playSpeech("حاول مرة أخرى", 'ar-EG');
+                feedback.innerHTML = `<span class="text-rose-600 font-bold">💡 ${hint}</span>`;
+                setTimeout(() => btnElement.classList.remove('shake', 'bg-rose-500', 'text-white'), 400);
+            }
         }
 
         function endGame() {
             hideAllScreens();
             document.getElementById('screenVictory').classList.remove('hidden');
             document.getElementById('screenVictory').classList.add('flex');
-            playSpeech("أحسنت يا Mohamed Habib!", 'ar-EG');
         }
 
         // الحروف العربية كاملة
@@ -703,4 +832,3 @@
     </script>
 </body>
 </html>
-
