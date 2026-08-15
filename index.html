@@ -1,9 +1,9 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>مغامرات البطل الصغير</title>
+    <title>أكاديمية الأبطال التعليمية - عربي وإنجليزي وروضة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +15,24 @@
             user-select: none;
             -webkit-touch-callout: none;
         }
+
+        /* خلفية سحرية متحركة لقسم الروضة والإنجليزي */
+        .magic-bg {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #fbcfe8, #fed7aa);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        .eng-bg {
+            background: linear-gradient(-45deg, #84fab0, #8fd3f4, #cfd9df, #e2ebf0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .bounce-slow {
             animation: bounce 3s infinite ease-in-out;
         }
@@ -50,12 +68,12 @@
 <body class="bg-sky-400 min-h-screen flex items-center justify-center p-0 m-0">
 
     <!-- الحاوية الرئيسية للتطبيق -->
-    <div class="relative w-full max-w-md md:max-w-4xl h-[100vh] md:h-[880px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-400 shadow-2xl md:rounded-3xl overflow-hidden flex flex-col justify-between border-4 border-amber-300">
+    <div id="mainContainer" class="relative w-full max-w-md md:max-w-4xl h-[100vh] md:h-[920px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-400 shadow-2xl md:rounded-3xl overflow-hidden flex flex-col justify-between border-4 border-amber-300 transition-all duration-500">
 
         <!-- خلفية منقطة خفيفة -->
-        <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div id="containerBgPattern" class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-        <!-- ================= 1. الشاشة الرئيسية ================= -->
+        <!-- ================= 1. الشاشة الرئيسية العامة ================= -->
         <div id="screenHome" class="flex flex-col justify-between h-full relative z-10 p-3 md:p-4 overflow-y-auto">
             <!-- الشريط العلوي -->
             <header class="flex items-center justify-between">
@@ -78,7 +96,6 @@
                     </div>
                 </div>
 
-                <!-- العلامة الجانبية habib -->
                 <div class="text-center">
                     <h2 class="text-[10px] tracking-widest text-amber-200 font-bold uppercase opacity-90">habib</h2>
                     <div class="w-6 h-0.5 bg-amber-400 mx-auto rounded-full mt-0.5"></div>
@@ -100,165 +117,352 @@
                     <h1 class="text-xl md:text-3xl font-black text-white drop-shadow-[0_3px_3px_rgba(0,0,0,0.5)]">
                         مغامرات البطل الصغير
                     </h1>
-                    <p class="text-[10px] md:text-xs font-bold text-amber-100 mt-0.5">الصف الأول الابتدائي • المناهج المصرية</p>
+                    <p class="text-[10px] md:text-xs font-bold text-amber-100 mt-0.5">الابتدائي، الروضة (KG)، وتأسيس الإنجليزية</p>
                 </div>
             </div>
 
-            <!-- أقسام اللعبة -->
-            <div class="grid grid-cols-2 gap-2.5 md:gap-3 items-center max-w-3xl mx-auto w-full px-1">
-                
-                <!-- 1. مدينة الرياضيات -->
-                <div onclick="startCategoryGame('math')" class="bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-400 cursor-pointer p-3 rounded-2xl md:rounded-3xl shadow-xl border-3 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition group">
-                    <div class="w-9 h-9 md:w-11 md:h-11 bg-white/20 rounded-2xl flex items-center justify-center text-lg md:text-xl mb-1 group-hover:rotate-12 transition">🏰</div>
-                    <h3 class="font-black text-xs md:text-base text-amber-200 drop-shadow">مدينة الرياضيات</h3>
-                    <p class="text-[10px] text-blue-100 mt-0.5">20 سؤال ممتع</p>
-                    <div class="mt-1.5 bg-emerald-500 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow flex items-center gap-1">
-                        <span>العب الآن</span> <i class="fa-solid fa-play text-[8px]"></i>
-                    </div>
-                </div>
-
-                <!-- 2. حديقة اللغة العربية -->
-                <div onclick="startCategoryGame('arabic')" class="bg-gradient-to-br from-rose-500 to-pink-600 hover:from-rose-400 cursor-pointer p-3 rounded-2xl md:rounded-3xl shadow-xl border-3 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition group">
-                    <div class="w-9 h-9 md:w-11 md:h-11 bg-white/20 rounded-2xl flex items-center justify-center text-lg md:text-xl mb-1 group-hover:rotate-12 transition">📖</div>
-                    <h3 class="font-black text-xs md:text-base text-amber-200 drop-shadow">حديقة العربي</h3>
-                    <p class="text-[10px] text-rose-100 mt-0.5">20 سؤال ومنهجنا</p>
-                    <div class="mt-1.5 bg-emerald-500 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow flex items-center gap-1">
-                        <span>العب الآن</span> <i class="fa-solid fa-play text-[8px]"></i>
-                    </div>
-                </div>
-
-                <!-- شخصية الطفل البطل -->
-                <div class="col-span-2 flex flex-col items-center justify-center my-0.5">
-                    <div class="relative bounce-slow cursor-pointer" onclick="heroCheer()">
-                        <div class="absolute -inset-1 bg-amber-400/30 rounded-full blur-md"></div>
-                        <div class="w-20 h-20 md:w-28 md:h-28 bg-gradient-to-tr from-orange-400 to-amber-300 rounded-full border-4 border-white shadow-xl flex items-center justify-center overflow-hidden relative">
-                            <span class="text-5xl md:text-6xl select-none">👦🏽</span>
+            <!-- أزرار الأقسام الكبرى (KG & English) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-3xl mx-auto w-full px-1">
+                <!-- زر روضة الأطفال (KG) -->
+                <div onclick="switchToKgZone()" class="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-400 cursor-pointer p-3 rounded-2xl shadow-xl border-3 border-yellow-300 text-white flex items-center justify-between transform hover:scale-102 transition group">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl group-hover:rotate-12 transition">🧸</div>
+                        <div>
+                            <h3 class="font-black text-sm md:text-base text-yellow-200">قسم روضة الأطفال (KG)</h3>
+                            <p class="text-[10px] text-pink-100">أرقام، حروف عربي، حيوانات، وتوصيل</p>
                         </div>
                     </div>
-                    <div class="bg-white px-3 py-1 rounded-full shadow border border-amber-300 text-slate-800 text-[11px] font-bold mt-1 animate-pulse">
-                        اضغط على أي قسم وابدأ التحدي! 🚀
-                    </div>
+                    <div class="bg-yellow-400 text-slate-900 px-3 py-1.5 rounded-xl font-black text-xs shadow-md">دخول</div>
                 </div>
 
-                <!-- 3. عالم الحيوان -->
-                <div onclick="startCategoryGame('animals')" class="bg-gradient-to-br from-amber-500 to-orange-600 hover:from-amber-400 cursor-pointer p-3 rounded-2xl md:rounded-3xl shadow-xl border-3 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition group">
-                    <div class="w-9 h-9 md:w-11 md:h-11 bg-white/20 rounded-2xl flex items-center justify-center text-lg md:text-xl mb-1 group-hover:-rotate-12 transition">🦁</div>
-                    <h3 class="font-black text-xs md:text-base text-amber-200 drop-shadow">عالم الحيوان</h3>
-                    <p class="text-[10px] text-amber-100 mt-0.5">20 سؤال شيق</p>
-                    <div class="mt-1.5 bg-emerald-500 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow flex items-center gap-1">
-                        <span>العب الآن</span> <i class="fa-solid fa-play text-[8px]"></i>
+                <!-- زر تأسيس الإنجليزية (English Zone) -->
+                <div onclick="switchToEngZone()" class="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-400 cursor-pointer p-3 rounded-2xl shadow-xl border-3 border-yellow-300 text-white flex items-center justify-between transform hover:scale-102 transition group">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl group-hover:rotate-12 transition">🔤</div>
+                        <div>
+                            <h3 class="font-black text-sm md:text-base text-yellow-200">تأسيس الإنجليزية (English)</h3>
+                            <p class="text-[10px] text-emerald-100">أرقام 1-100 انجليزي، حروف ABC، وSpelling</p>
+                        </div>
                     </div>
+                    <div class="bg-yellow-400 text-slate-900 px-3 py-1.5 rounded-xl font-black text-xs shadow-md">دخول</div>
                 </div>
-
-                <!-- 4. جزيرة الذكاء -->
-                <div onclick="startCategoryGame('smart')" class="bg-gradient-to-br from-purple-600 to-violet-700 hover:from-purple-500 cursor-pointer p-3 rounded-2xl md:rounded-3xl shadow-xl border-3 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition group">
-                    <div class="w-9 h-9 md:w-11 md:h-11 bg-white/20 rounded-2xl flex items-center justify-center text-lg md:text-xl mb-1 group-hover:-rotate-12 transition">🏝️</div>
-                    <h3 class="font-black text-xs md:text-base text-amber-200 drop-shadow">جزيرة الذكاء</h3>
-                    <p class="text-[10px] text-purple-100 mt-0.5">20 سؤال عام وذكاء</p>
-                    <div class="mt-1.5 bg-emerald-500 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow flex items-center gap-1">
-                        <span>العب الآن</span> <i class="fa-solid fa-play text-[8px]"></i>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- زر ابدأ اللعب السريع -->
-            <div class="w-full px-1 my-1">
-                <button onclick="startCategoryGame('math')" class="w-full py-2.5 bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-400 text-white font-black text-sm md:text-base rounded-2xl shadow-xl border-3 border-white transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
-                    <span class="bg-white/30 w-7 h-7 rounded-full flex items-center justify-center text-sm">▶</span>
-                    <span>ابدأ اللعب السريع الآن</span>
-                </button>
+            <!-- أقسام الابتدائي والأسئلة -->
+            <div class="grid grid-cols-2 gap-2 items-center max-w-3xl mx-auto w-full px-1 mt-1">
+                <div onclick="startCategoryGame('math')" class="bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-400 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-lg">🏰</span>
+                    <h3 class="font-black text-xs text-amber-200">مدينة الرياضيات</h3>
+                    <p class="text-[9px] text-blue-100">20 سؤال</p>
+                </div>
+
+                <div onclick="startCategoryGame('arabic')" class="bg-gradient-to-br from-rose-500 to-pink-600 hover:from-rose-400 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-lg">📖</span>
+                    <h3 class="font-black text-xs text-amber-200">حديقة العربي</h3>
+                    <p class="text-[9px] text-rose-100">20 سؤال</p>
+                </div>
+
+                <div onclick="startCategoryGame('animals')" class="bg-gradient-to-br from-amber-500 to-orange-600 hover:from-amber-400 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-lg">🦁</span>
+                    <h3 class="font-black text-xs text-amber-200">عالم الحيوان</h3>
+                    <p class="text-[9px] text-amber-100">20 سؤال</p>
+                </div>
+
+                <div onclick="startCategoryGame('smart')" class="bg-gradient-to-br from-purple-600 to-violet-700 hover:from-purple-500 cursor-pointer p-2.5 rounded-2xl shadow-xl border-2 border-white/90 text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-lg">🏝️</span>
+                    <h3 class="font-black text-xs text-amber-200">جزيرة الذكاء</h3>
+                    <p class="text-[9px] text-purple-100">20 سؤال</p>
+                </div>
             </div>
 
             <!-- الشريط السفلي -->
-            <footer class="bg-black/40 backdrop-blur-md px-2 py-2 flex items-center justify-around border-t border-white/20 rounded-2xl">
-                <button onclick="openModal('المهام اليومية 📅', '1. حل 15 سؤال صح.\n2. اجمع 10 نجوم جديدة.\n3. افتح اللعبة كل يوم عشان تكسب جوائز أكتر.')" class="flex items-center gap-1 bg-blue-600 text-white px-2 py-1 rounded-xl font-bold text-[11px] border border-white/80 shadow">
-                    <span>📅</span> المهام
-                </button>
-                <button onclick="openModal('المكافآت والهدية 🎁', 'مبروك يا بطل! هديتك اليومية جاهزة: 100 عملة ذهبية أضيفت لحسابك.')" class="flex items-center gap-1 bg-amber-500 text-white px-2 py-1 rounded-xl font-bold text-[11px] border border-white/80 shadow">
-                    <span>🎁</span> المكافآت
-                </button>
-                <button onclick="openModal('التحديات الأسبوعية 🎒', 'تحدي عبقري الأجيال: كمل أي مغامرة من غير ما تخسر ولا قلب!')" class="flex items-center gap-1 bg-emerald-600 text-white px-2 py-1 rounded-xl font-bold text-[11px] border border-white/80 shadow">
-                    <span>🎒</span> التحديات
-                </button>
+            <footer class="bg-black/40 backdrop-blur-md px-2 py-2 flex items-center justify-around border-t border-white/20 rounded-2xl mt-1">
+                <button onclick="openModal('المهام اليومية 📅', '1. حل 15 سؤال صح.\n2. اجمع 10 نجوم جديدة.\n3. افتح اللعبة كل يوم عشان تكسب جوائز أكتر.')" class="flex items-center gap-1 bg-blue-600 text-white px-2 py-1 rounded-xl font-bold text-[10px] shadow">📅 المهام</button>
+                <button onclick="openModal('المكافآت والهدية 🎁', 'مبروك يا بطل! هديتك اليومية جاهزة: 100 عملة ذهبية أضيفت لحسابك.')" class="flex items-center gap-1 bg-amber-500 text-white px-2 py-1 rounded-xl font-bold text-[10px] shadow">🎁 المكافآت</button>
+                <button onclick="openModal('التحديات الأسبوعية 🎒', 'تحدي عبقري الأجيال: كمل أي مغامرة من غير ما تخسر ولا قلب!')" class="flex items-center gap-1 bg-emerald-600 text-white px-2 py-1 rounded-xl font-bold text-[10px] shadow">🎒 التحديات</button>
             </footer>
         </div>
 
 
-        <!-- ================= 2. شاشة اللعب التفاعلية ================= -->
-        <div id="screenGame" class="hidden flex-col justify-between h-full relative z-10 p-4 md:p-6">
-            <header class="flex items-center justify-between bg-black/40 backdrop-blur-md p-2.5 rounded-2xl border border-white/30 text-white">
-                <button onclick="returnToHome()" class="bg-rose-600 hover:bg-rose-500 px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1 transition">
+        <!-- ================= 2. واجهة روضة الأطفال (KG Zone) ================= -->
+        <div id="screenKgHome" class="hidden flex-col justify-between h-full relative z-10 p-3 md:p-5 overflow-y-auto">
+            <header class="flex items-center justify-between">
+                <button onclick="returnToHome()" class="bg-rose-500 hover:bg-rose-400 text-white px-3 py-1.5 rounded-2xl font-black text-xs shadow-lg border-2 border-white flex items-center gap-1.5 transition">
                     <i class="fa-solid fa-house"></i> الرئيسية
                 </button>
+                <div class="text-center">
+                    <h2 class="text-xs tracking-widest text-pink-600 font-bold uppercase">KG ZONE 🧸</h2>
+                </div>
+                <div class="text-xs font-black text-amber-600 bg-white/90 px-3 py-1 rounded-full">🪙 <span id="kgCoins">500</span></div>
+            </header>
 
-                <div class="flex items-center gap-2.5">
-                    <div class="flex items-center gap-1 font-black text-amber-300 text-xs">
-                        <span>⭐</span> <span id="gameStars">0</span>
-                    </div>
-                    <div class="flex items-center gap-1 font-black text-amber-200 text-xs">
-                        <span>🪙</span> <span id="gameCoins">1250</span>
-                    </div>
-                    <div class="flex items-center gap-1 font-black text-rose-400 text-sm">
-                        <span>❤️</span> <span id="gameLives">3</span>
-                    </div>
+            <div class="text-center my-1">
+                <div class="inline-block px-5 py-1.5 bg-gradient-to-r from-pink-500 via-rose-400 to-pink-500 rounded-3xl shadow-xl border-3 border-yellow-200">
+                    <h1 class="text-xl md:text-3xl font-black text-white">روضة الأبطال الصغار</h1>
+                    <p class="text-[10px] text-yellow-100">العربي، الأرقام، والحيوانات</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 items-center max-w-3xl mx-auto w-full px-1">
+                <div onclick="startNumbersScreen()" class="bg-gradient-to-br from-emerald-400 to-teal-600 cursor-pointer p-3.5 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-2xl mb-1">🔢</span>
+                    <h3 class="font-black text-xs md:text-base text-yellow-200">أرقام 1-100</h3>
+                    <p class="text-[10px] text-emerald-100">بالعربي</p>
+                </div>
+                <div onclick="startLettersScreen()" class="bg-gradient-to-br from-pink-500 to-rose-600 cursor-pointer p-3.5 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-2xl mb-1">📚</span>
+                    <h3 class="font-black text-xs md:text-base text-yellow-200">حروف الهجاء</h3>
+                    <p class="text-[10px] text-pink-100">أ - ي</p>
+                </div>
+                <div onclick="startAnimalsScreen()" class="bg-gradient-to-br from-amber-500 to-orange-600 cursor-pointer p-3.5 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-2xl mb-1">🦁</span>
+                    <h3 class="font-black text-xs md:text-base text-yellow-200">أشكال الحيوانات</h3>
+                    <p class="text-[10px] text-amber-100">أصوات وأشكال</p>
+                </div>
+                <div onclick="startMatchGameScreen()" class="bg-gradient-to-br from-purple-500 to-indigo-600 cursor-pointer p-3.5 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-2xl mb-1">🧩</span>
+                    <h3 class="font-black text-xs md:text-base text-yellow-200">لعبة التوصيل</h3>
+                    <p class="text-[10px] text-purple-100">اختبر ذكائك</p>
+                </div>
+            </div>
+            <footer class="bg-white/80 p-2 text-center rounded-2xl font-bold text-xs text-slate-700">🧸 روضة الأطفال المتكاملة</footer>
+        </div>
+
+
+        <!-- ================= 3. واجهة تأسيس الإنجليزية (English Zone) ================= -->
+        <div id="screenEngHome" class="hidden flex-col justify-between h-full relative z-10 p-3 md:p-5 overflow-y-auto">
+            <header class="flex items-center justify-between">
+                <button onclick="returnToHome()" class="bg-rose-500 hover:bg-rose-400 text-white px-3 py-1.5 rounded-2xl font-black text-xs shadow-lg border-2 border-white flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-house"></i> الرئيسية
+                </button>
+                <div class="text-center">
+                    <h2 class="text-xs tracking-widest text-teal-700 font-bold uppercase">ENGLISH ZONE 🔤</h2>
+                </div>
+                <div class="text-xs font-black text-amber-600 bg-white/90 px-3 py-1 rounded-full">⭐ <span id="engStars">15</span></div>
+            </header>
+
+            <div class="text-center my-1">
+                <div class="inline-block px-5 py-1.5 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 rounded-3xl shadow-xl border-3 border-yellow-200">
+                    <h1 class="text-xl md:text-3xl font-black text-white">تأسيس اللغة الإنجليزية</h1>
+                    <p class="text-[10px] text-yellow-100">أرقام، حروف ABC، وحيوانات مع Spelling</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-center max-w-3xl mx-auto w-full px-1">
+                <!-- أرقام إنجليزية 1-100 -->
+                <div onclick="startEngNumbersScreen()" class="bg-gradient-to-br from-teal-500 to-emerald-600 cursor-pointer p-4 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-3xl mb-1">🔟</span>
+                    <h3 class="font-black text-sm md:text-base text-yellow-200">English Numbers (1-100)</h3>
+                    <p class="text-[11px] text-teal-100">تعلم ونطق الأرقام بالإنجليزية</p>
                 </div>
 
-                <div class="bg-blue-600 px-2.5 py-1 rounded-xl font-black text-xs">
-                    السؤال <span id="currentQNum">1</span> / 20
+                <!-- حروف إنجليزية ABC -->
+                <div onclick="startEngLettersScreen()" class="bg-gradient-to-br from-indigo-500 to-blue-600 cursor-pointer p-4 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-3xl mb-1">🔤</span>
+                    <h3 class="font-black text-sm md:text-base text-yellow-200">English Alphabet (A-Z)</h3>
+                    <p class="text-[11px] text-indigo-100">حروف الإنجليزية والكلمات</p>
                 </div>
+
+                <!-- حيوانات إنجليزية مع Spelling -->
+                <div onclick="startEngAnimalsScreen()" class="bg-gradient-to-br from-orange-500 to-amber-600 cursor-pointer p-4 rounded-3xl shadow-xl border-3 border-white text-white flex flex-col items-center text-center transform hover:scale-105 transition">
+                    <span class="text-3xl mb-1">🐅</span>
+                    <h3 class="font-black text-sm md:text-base text-yellow-200">Animals & Spelling</h3>
+                    <p class="text-[11px] text-orange-100">أسماء الحيوانات والتهجئة بالإنجليزية</p>
+                </div>
+            </div>
+
+            <footer class="bg-white/80 p-2 text-center rounded-2xl font-bold text-xs text-slate-700">✨ قسم تأسيس الإنجليزية باحترافية للأطفال</footer>
+        </div>
+
+
+        <!-- ================= 4. الشاشات التفاعلية للتعلم (عربي وإنجليزي) ================= -->
+
+        <!-- شاشة مسابقات المناهج -->
+        <div id="screenGame" class="hidden flex-col justify-between h-full relative z-10 p-4 md:p-6">
+            <header class="flex items-center justify-between bg-black/40 backdrop-blur-md p-2.5 rounded-2xl border border-white/30 text-white">
+                <button onclick="returnToHome()" class="bg-rose-600 hover:bg-rose-500 px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1">
+                    <i class="fa-solid fa-house"></i> الرئيسية
+                </button>
+                <div class="flex items-center gap-2.5 text-xs">
+                    <span class="text-amber-300 font-black">⭐ <span id="gameStars">0</span></span>
+                    <span class="text-amber-200 font-black">🪙 <span id="gameCoins">1250</span></span>
+                    <span class="text-rose-400 font-black">❤️ <span id="gameLives">3</span></span>
+                </div>
+                <div class="bg-blue-600 px-2.5 py-1 rounded-xl font-black text-xs">السؤال <span id="currentQNum">1</span> / 20</div>
             </header>
 
             <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 md:p-6 shadow-2xl border-4 border-amber-400 max-w-2xl mx-auto w-full my-auto text-center pop">
                 <div class="w-full bg-slate-200 h-2.5 rounded-full mb-3 overflow-hidden">
                     <div id="progressBar" class="bg-emerald-500 h-full transition-all duration-300" style="width: 5%;"></div>
                 </div>
-
                 <div id="categoryTitleIndicator" class="text-xs font-bold text-indigo-600 mb-1">المادة</div>
-                <div id="questionArea" class="text-lg md:text-2xl font-black text-slate-800 mb-3 min-h-[60px] flex items-center justify-center">
-                    <!-- السؤال هنا -->
-                </div>
-
+                <div id="questionArea" class="text-lg md:text-2xl font-black text-slate-800 mb-3 min-h-[60px] flex items-center justify-center"></div>
                 <div id="feedbackMsg" class="h-6 font-bold text-xs md:text-sm mb-2 transition-all"></div>
-
-                <div id="optionsGrid" class="grid grid-cols-2 gap-2.5">
-                    <!-- الأزرار -->
-                </div>
+                <div id="optionsGrid" class="grid grid-cols-2 gap-2.5"></div>
             </div>
-
-            <div class="text-center text-white font-bold text-xs bg-black/30 py-1.5 rounded-xl max-w-md mx-auto w-full">
-                💡 اضغط على الإجابة الصح عشان تكسب نجوم وعملات!
-            </div>
+            <div class="text-center text-white font-bold text-xs bg-black/30 py-1.5 rounded-xl max-w-md mx-auto w-full">💡 اضغط على الإجابة الصح عشان تكسب نجوم وعملات!</div>
         </div>
 
 
-        <!-- ================= 3. شاشة الفوز والنهاية ================= -->
-        <div id="screenVictory" class="hidden flex-col items-center justify-center h-full relative z-10 p-6 text-center pop">
-            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full rounded-3xl p-6 md:p-8 shadow-2xl border-4 border-amber-400">
-                <div class="w-16 h-16 md:w-20 md:h-20 bg-amber-400 rounded-full flex items-center justify-center text-3xl md:text-4xl mx-auto -mt-14 border-4 border-white shadow-xl mb-3 bounce-slow">
-                    🏆
+        <!-- شاشة تعليم الأرقام عربي (1-100) -->
+        <div id="screenNumbers" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-pink-200 shadow-sm text-slate-700">
+                <button onclick="switchToKgZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-pink-600 text-sm md:text-base">🔢 الأرقام بالعربي (1-100)</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-yellow-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-5xl md:text-7xl font-black text-pink-600 my-2" id="currentNumDisplay">1</div>
+                <div class="text-xl md:text-2xl font-black text-slate-700 mb-4" id="currentNumWord">واحد</div>
+                <div class="flex gap-3 justify-center mb-4">
+                    <button onclick="changeNumber(-1)" class="px-4 py-2 bg-pink-500 text-white font-black rounded-2xl shadow">السابق</button>
+                    <button onclick="speakCurrentNumber('ar')" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow"><i class="fa-solid fa-volume-high"></i> انطق</button>
+                    <button onclick="changeNumber(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">التالي</button>
                 </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 اضغط لنطق الرقم بالعربي</div>
+        </div>
+
+
+        <!-- شاشة تعليم الحروف العربي (أ-ي) -->
+        <div id="screenLetters" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-pink-200 shadow-sm text-slate-700">
+                <button onclick="switchToKgZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-pink-600 text-sm md:text-base">📚 الحروف الهجائية (أ-ي)</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-yellow-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-6xl md:text-8xl font-black text-rose-500 my-2" id="currentLetterDisplay">أ</div>
+                <div class="text-xl md:text-2xl font-black text-slate-800 mb-2" id="currentLetterWord">أَسَد 🦁</div>
+                <div class="text-xs md:text-sm font-bold text-slate-500 mb-4" id="currentLetterHint">ألف أسد، ملك الغابة</div>
+                <div class="flex gap-4 justify-center mb-4">
+                    <button onclick="changeLetter(-1)" class="px-4 py-2 bg-pink-500 text-white font-black rounded-2xl shadow">السابق</button>
+                    <button onclick="speakCurrentLetter()" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow"><i class="fa-solid fa-volume-high"></i> انطق</button>
+                    <button onclick="changeLetter(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">التالي</button>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 تعلم الحرف مع كلمته</div>
+        </div>
+
+
+        <!-- شاشة حيوانات الروضة -->
+        <div id="screenAnimals" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-pink-200 shadow-sm text-slate-700">
+                <button onclick="switchToKgZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-pink-600 text-sm md:text-base">🦁 الحيوانات بالعربي</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-yellow-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-7xl md:text-9xl my-2" id="currentAnimalEmoji">🦁</div>
+                <div class="text-2xl md:text-3xl font-black text-amber-600 mb-1" id="currentAnimalName">الأسد</div>
+                <div class="text-sm md:text-base font-bold text-slate-600 mb-4" id="currentAnimalDesc">ملك الغابة القوي</div>
+                <div class="flex gap-4 justify-center mb-4">
+                    <button onclick="changeAnimal(-1)" class="px-4 py-2 bg-pink-500 text-white font-black rounded-2xl shadow">السابق</button>
+                    <button onclick="speakCurrentAnimal()" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow"><i class="fa-solid fa-volume-high"></i> اسمع</button>
+                    <button onclick="changeAnimal(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">التالي</button>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 تعرف على أشكال الحيوانات</div>
+        </div>
+
+
+        <!-- شاشة لعبة التوصيل -->
+        <div id="screenMatchGame" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-pink-200 shadow-sm text-slate-700">
+                <button onclick="switchToKgZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <div class="bg-blue-600 text-white px-2.5 py-1 rounded-xl font-bold text-xs">السؤال <span id="matchQNum">1</span> / 10</div>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-yellow-300 max-w-2xl mx-auto w-full my-auto text-center pop">
+                <div class="w-full bg-slate-200 h-2.5 rounded-full mb-3 overflow-hidden">
+                    <div id="matchProgressBar" class="bg-pink-500 h-full transition-all duration-300" style="width: 10%;"></div>
+                </div>
+                <div class="text-lg md:text-2xl font-black text-slate-800 mb-3 min-h-[50px] flex items-center justify-center" id="matchQuestionText">السؤال هنا...</div>
+                <div id="matchFeedback" class="h-6 font-bold text-xs md:text-sm mb-2 text-rose-500"></div>
+                <div id="matchOptionsGrid" class="grid grid-cols-2 gap-2.5"></div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-1.5 rounded-xl">💡 اختر الإجابة الصحيحة</div>
+        </div>
+
+
+        <!-- ================= 5. شاشات تأسيس الإنجليزية (English Screens) ================= -->
+
+        <!-- شاشة الأرقام بالإنجليزية (1-100) -->
+        <div id="screenEngNumbers" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-teal-200 shadow-sm text-slate-700">
+                <button onclick="switchToEngZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-teal-700 text-sm md:text-base">🔟 English Numbers (1-100)</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-teal-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-6xl md:text-8xl font-black text-teal-600 my-2" id="engNumDisplay">1</div>
+                <div class="text-2xl md:text-3xl font-black text-slate-800 mb-4 uppercase tracking-wider" id="engNumWord">One</div>
+                <div class="flex gap-3 justify-center mb-4">
+                    <button onclick="changeEngNumber(-1)" class="px-4 py-2 bg-teal-500 text-white font-black rounded-2xl shadow">Previous ◀</button>
+                    <button onclick="speakEngNumber()" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow flex items-center gap-1"><i class="fa-solid fa-volume-high"></i> Speak</button>
+                    <button onclick="changeEngNumber(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">Next ▶</button>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 Learn numbers in English with proper pronunciation</div>
+        </div>
+
+
+        <!-- شاشة الحروف الإنجليزية (A-Z) -->
+        <div id="screenEngLetters" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-teal-200 shadow-sm text-slate-700">
+                <button onclick="switchToEngZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-indigo-700 text-sm md:text-base">🔤 English Alphabet (A - Z)</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-indigo-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-6xl md:text-9xl font-black text-indigo-600 my-2" id="engLetterDisplay">A a</div>
+                <div class="text-2xl md:text-3xl font-black text-slate-800 mb-1 uppercase tracking-wider" id="engLetterWord">Apple 🍎</div>
+                <div class="text-sm font-bold text-slate-500 mb-4" id="engLetterHint">A is for Apple</div>
+                <div class="flex gap-4 justify-center mb-4">
+                    <button onclick="changeEngLetter(-1)" class="px-4 py-2 bg-indigo-500 text-white font-black rounded-2xl shadow">Previous ◀</button>
+                    <button onclick="speakEngLetter()" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow flex items-center gap-1"><i class="fa-solid fa-volume-high"></i> Speak</button>
+                    <button onclick="changeEngLetter(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">Next ▶</button>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 Learn ABC letters and words</div>
+        </div>
+
+
+        <!-- شاشة حيوانات الإنجليزية مع Spelling -->
+        <div id="screenEngAnimals" class="hidden flex-col justify-between h-full relative z-10 p-4">
+            <header class="flex items-center justify-between bg-white/90 backdrop-blur-md p-2.5 rounded-2xl border border-teal-200 shadow-sm text-slate-700">
+                <button onclick="switchToEngZone()" class="bg-rose-500 text-white px-2.5 py-1 rounded-xl font-bold text-xs shadow flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+                <h3 class="font-black text-orange-600 text-sm md:text-base">🐅 Animals & Spelling</h3>
+            </header>
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-4 shadow-2xl border-4 border-orange-300 max-w-2xl mx-auto w-full my-auto text-center pop flex flex-col items-center">
+                <div class="text-7xl md:text-9xl my-2" id="engAnimalEmoji">🦁</div>
+                <div class="text-3xl md:text-4xl font-black text-orange-600 mb-1 uppercase tracking-widest" id="engAnimalName">Lion</div>
+                <div class="text-lg md:text-xl font-black text-indigo-700 bg-indigo-50 px-4 py-1 rounded-xl border border-indigo-200 mb-3" id="engAnimalSpelling">Spelling: L - I - O - N</div>
+                <div class="text-sm font-bold text-slate-600 mb-4" id="engAnimalDesc">King of the Jungle</div>
+                <div class="flex gap-4 justify-center mb-4">
+                    <button onclick="changeEngAnimal(-1)" class="px-4 py-2 bg-orange-500 text-white font-black rounded-2xl shadow">Previous ◀</button>
+                    <button onclick="speakEngAnimal()" class="px-5 py-2 bg-yellow-400 text-slate-900 font-black rounded-2xl shadow flex items-center gap-1"><i class="fa-solid fa-volume-high"></i> Listen</button>
+                    <button onclick="changeEngAnimal(1)" class="px-4 py-2 bg-emerald-500 text-white font-black rounded-2xl shadow">Next ▶</button>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 font-bold text-xs bg-white/80 py-2 rounded-xl">💡 Learn animal names and spell them correctly!</div>
+        </div>
+
+
+        <!-- ================= 6. شاشة الفوز العامة ================= -->
+        <div id="screenVictory" class="hidden flex-col items-center justify-center h-full relative z-10 p-6 text-center pop">
+            <div class="bg-white/95 backdrop-blur-md max-w-lg w-full rounded-3xl p-6 shadow-2xl border-4 border-amber-400">
+                <div class="w-16 h-16 md:w-20 md:h-20 bg-amber-400 rounded-full flex items-center justify-center text-3xl md:text-4xl mx-auto -mt-14 border-4 border-white shadow-xl mb-3 bounce-slow">🏆</div>
                 <h2 class="text-2xl md:text-3xl font-black text-slate-800 mb-2">🎉 برافو عليك يا بطل!</h2>
-                <p class="text-slate-600 text-sm md:text-base font-bold mb-4">خلصت الـ 20 سؤال بكل شجاعة وذكاء!</p>
+                <p class="text-slate-600 text-sm md:text-base font-bold mb-4">أنت شطور خالص وخلصت التحدي بامتياز!</p>
 
                 <div class="flex justify-center gap-6 mb-5 bg-amber-50 p-3.5 rounded-2xl border-2 border-amber-200">
                     <div class="text-center">
                         <span class="text-2xl">⭐</span>
-                        <h4 class="font-black text-base md:text-lg text-amber-600 mt-1" id="finalStars">+20 نجمة</h4>
+                        <h4 class="font-black text-base text-amber-600 mt-1" id="finalStars">+10 نجوم</h4>
                     </div>
                     <div class="text-center">
                         <span class="text-2xl">🪙</span>
-                        <h4 class="font-black text-base md:text-lg text-amber-600 mt-1" id="finalCoins">+200 عملة</h4>
+                        <h4 class="font-black text-base text-amber-600 mt-1" id="finalCoins">+100 عملة</h4>
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-2">
-                    <button onclick="restartCurrentCategory()" class="py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm md:text-base rounded-2xl shadow-lg transition">
-                        🔄 العب تاني
-                    </button>
-                    <button onclick="returnToHome()" class="py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm rounded-2xl transition">
-                        🏠 ارجع للرئيسية
-                    </button>
+                    <button onclick="returnToHome()" class="py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm rounded-2xl shadow-lg transition">🏠 ارجع للرئيسية</button>
                 </div>
             </div>
         </div>
@@ -268,9 +472,7 @@
     <!-- نافذة منبثقة عامة -->
     <div id="generalModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all">
         <div class="bg-gradient-to-b from-sky-100 to-white w-full max-w-md rounded-3xl p-5 shadow-2xl border-4 border-amber-400 text-center pop">
-            <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center text-xl mx-auto -mt-10 border-4 border-white shadow-lg mb-2">
-                ⭐
-            </div>
+            <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center text-xl mx-auto -mt-10 border-4 border-white shadow-lg mb-2">⭐</div>
             <h3 id="modalTitle" class="text-lg md:text-xl font-black text-slate-800 mb-1">عنوان</h3>
             <p id="modalDesc" class="text-slate-600 text-xs md:text-sm font-medium mb-4 whitespace-pre-line leading-relaxed">تفاصيل...</p>
             <button onclick="closeModal()" class="w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm rounded-2xl shadow-lg transition">حسناً يا بطل</button>
@@ -278,7 +480,7 @@
     </div>
 
 
-    <!-- ================= منطق اللعبة وجافاسكريبت المطور ================= -->
+    <!-- ================= منطق الجافاسكريبت الشامل والمتكامل ================= -->
     <script>
         let gameData = {
             coins: 1250,
@@ -288,16 +490,16 @@
         };
 
         function saveGame() {
-            localStorage.setItem('habib_hero_adventure', JSON.stringify(gameData));
+            localStorage.setItem('academy_hero_adventure', JSON.stringify(gameData));
         }
 
         function loadGame() {
-            const saved = localStorage.getItem('habib_hero_adventure');
+            const saved = localStorage.getItem('academy_hero_adventure');
             if (saved) {
                 try {
                     gameData = JSON.parse(saved);
                 } catch (e) {
-                    console.error("خطأ في البيانات", e);
+                    console.error("خطأ", e);
                 }
             }
             updateGlobalUI();
@@ -306,8 +508,8 @@
         function updateGlobalUI() {
             document.getElementById('coinsCount').innerText = gameData.coins;
             document.getElementById('starsCount').innerText = gameData.stars;
-            document.getElementById('gameCoins').innerText = gameData.coins;
-            document.getElementById('gameStars').innerText = gameData.stars;
+            document.getElementById('kgCoins').innerText = gameData.coins;
+            document.getElementById('engStars').innerText = gameData.stars;
             document.getElementById('playerLevelBadge').innerText = 'مستوى ' + gameData.level;
             
             const soundBtn = document.getElementById('soundToggleBtn');
@@ -324,16 +526,56 @@
             updateGlobalUI();
         }
 
-        function playSpeech(text) {
+        function playSpeech(text, lang = 'ar-EG') {
             if (!gameData.soundEnabled || !window.speechSynthesis) return;
             window.speechSynthesis.cancel();
             const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = 'ar-EG';
-            utter.rate = 0.95;
+            utter.lang = lang;
+            utter.rate = 0.9;
             window.speechSynthesis.speak(utter);
         }
 
-        // بنوك الأسئلة موسعة (20 سؤال لكل قسم)
+        // التنقل بين الأقسام الرئيسية
+        function switchToKgZone() {
+            hideAllScreens();
+            document.getElementById('mainContainer').className = "relative w-full max-w-md md:max-w-4xl h-[100vh] md:h-[920px] shadow-2xl md:rounded-3xl overflow-hidden flex flex-col justify-between border-4 border-yellow-400 magic-bg transition-all duration-500";
+            document.getElementById('containerBgPattern').className = "absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#ff3366_1px,transparent_1px)] [background-size:24px_24px]";
+            document.getElementById('screenKgHome').classList.remove('hidden');
+            document.getElementById('screenKgHome').classList.add('flex');
+            updateGlobalUI();
+        }
+
+        function switchToEngZone() {
+            hideAllScreens();
+            document.getElementById('mainContainer').className = "relative w-full max-w-md md:max-w-4xl h-[100vh] md:h-[920px] shadow-2xl md:rounded-3xl overflow-hidden flex flex-col justify-between border-4 border-teal-400 eng-bg transition-all duration-500";
+            document.getElementById('containerBgPattern').className = "absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#008080_1px,transparent_1px)] [background-size:24px_24px]";
+            document.getElementById('screenEngHome').classList.remove('hidden');
+            document.getElementById('screenEngHome').classList.add('flex');
+            updateGlobalUI();
+        }
+
+        function returnToHome() {
+            hideAllScreens();
+            document.getElementById('mainContainer').className = "relative w-full max-w-md md:max-w-4xl h-[100vh] md:h-[920px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-400 shadow-2xl md:rounded-3xl overflow-hidden flex flex-col justify-between border-4 border-amber-300 transition-all duration-500";
+            document.getElementById('containerBgPattern').className = "absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]";
+            document.getElementById('screenHome').classList.remove('hidden');
+            document.getElementById('screenHome').classList.add('flex');
+            updateGlobalUI();
+        }
+
+        function hideAllScreens() {
+            const screens = ['screenHome', 'screenKgHome', 'screenEngHome', 'screenGame', 'screenNumbers', 'screenLetters', 'screenAnimals', 'screenMatchGame', 'screenEngNumbers', 'screenEngLetters', 'screenEngAnimals', 'screenVictory'];
+            screens.forEach(s => {
+                const el = document.getElementById(s);
+                if(el) {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                }
+            });
+        }
+
+
+        // ================= 1. بنوك الأسئلة للمناهج =================
         const categoriesData = {
             math: {
                 title: "🏰 مدينة الرياضيات",
@@ -347,17 +589,7 @@
                     { question: "🚗 🚗 🚗 🚗  +  🚗 🚗 🚗  = ?", options: [6, 7, 8, 9], answer: 7, hint: "عد العربيات كلها يطلعوا 7!" },
                     { question: "كام ناتج جمع: 4 + 4 = ؟", options: [6, 7, 8, 9], answer: 8, hint: "أربعة ومعاهم أربعة يبقوا ثمانية." },
                     { question: "إيه الرقم الأصغر: 9 ولا 3؟", options: [9, 3, 6, 5], answer: 3, hint: "الرقم 3 هو الأصغر بينهم." },
-                    { question: "كام ناتج طرح: 6 - 3 = ؟", options: [2, 3, 4, 6], answer: 3, hint: "نصف الستة هو 3." },
-                    { question: "ما هو ناتج: 1 + 1 = ؟", options: [1, 2, 3, 4], answer: 2, hint: "واحد وزيه يبقى اتنين." },
-                    { question: "ما هو ناتج: 10 - 5 = ؟", options: [3, 4, 5, 6], answer: 5, hint: "نصف العشرة هو 5." },
-                    { question: "أي الأرقام التالية هو الأكبر؟", options: [2, 8, 5, 1], answer: 8, hint: "الرقم 8 هو الأكبر فيهم." },
-                    { question: "أكمل المتتالية: 2، 4، ؟، 8", options: [5, 6, 7, 9], answer: 6, hint: "بنعد ونزود 2: 2، 4، 6، 8." },
-                    { question: "ما هو ناتج: 3 + 3 = ؟", options: [5, 6, 7, 8], answer: 6, hint: "3 زائد 3 يساوي 6." },
-                    { question: "كم ضلعاً للمثلث؟", options: [2, 3, 4, 5], answer: 3, hint: "المثلث عنده 3 أضلاع." },
-                    { question: "كم ركناً للمربع؟", options: [2, 3, 4, 5], answer: 4, hint: "المربع عنده 4 أركان متساوية." },
-                    { question: "معك 5 جنيهات وأخذت 5 جنيهات أخرى، كم معك الآن؟", options: [8, 9, 10, 12], answer: 10, hint: "5 + 5 = 10." },
-                    { question: "ما هو ناتج: 7 - 1 = ؟", options: [5, 6, 7, 8], answer: 6, hint: "اطرح 1 من 7 يتبقى 6." },
-                    { question: "أي الأرقام يقع بين 5 و 7؟", options: [4, 6, 8, 9], answer: 6, hint: "الرقم هو 6." }
+                    { question: "كام ناتج طرح: 6 - 3 = ؟", options: [2, 3, 4, 6], answer: 3, hint: "نصف الستة هو 3." }
                 ]
             },
             arabic: {
@@ -367,22 +599,7 @@
                     { question: "اختر الكلمة التي تبدأ بحرف (م):", options: ["تفاحة", "موز", "قلم", "شمس"], answer: "موز", hint: "كلمة موز تبدأ بحرف الميم." },
                     { question: "ما هو جمع كلمة (كتاب)؟", options: ["كتب", "كاتب", "مكتب", "كتابان"], answer: "كتب", hint: "جمع كتاب هو كتب." },
                     { question: "أي الكلمات الآتية تدل على المذكر؟", options: ["بنت", "معلمة", "ولد", "دجاجة"], answer: "ولد", hint: "كلمة ولد تدل على المذكر." },
-                    { question: "الحرف الذي يأتي بعد حرف (ب) هو:", options: ["أ", "ج", "ت", "ث"], answer: "ت", hint: "الترتيب: أ، ب، ت، ث." },
-                    { question: "ما هو الحرف الأخير في الهجاء العربي؟", options: ["أ", "ي", "و", "م"], answer: "ي", hint: "حرف الياء هو آخر الحروف." },
-                    { question: "كلمة (شمس) تبدأ بحرف:", options: ["س", "ش", "م", "ب"], answer: "ش", hint: "تبدأ بحرف الشين (شمس)." },
-                    { question: "مضاد كلمة (كبير) هو:", options: ["واسع", "صغير", "قصير", "جميل"], answer: "صغير", hint: "عكس كبير هو صغير." },
-                    { question: "اختر الفعل المناسب: (البطَّة .... في الماء)", options: ["تطير", "تسبح", "تجري", "تنام"], answer: "تسبح", hint: "البطَّة تسبح في الماء." },
-                    { question: "ما هو مفرد كلمة (أقلام)؟", options: ["قلم", "قلعة", "قيم", "قائم"], answer: "قلم", hint: "مفرد أقلام هو قلم واحد." },
-                    { question: "كلمة (تفاحة) تبدأ بحرف:", options: ["ت", "ب", "ف", "ح"], answer: "ت", hint: "تبدأ بحرف التاء." },
-                    { question: "ما هو الحرف الممدود بالالف في كلمة (بَاب)؟", options: ["ب", "ا", "ب الأخير", "لا يوجد"], answer: "ا", hint: "حرف المد هو الألف." },
-                    { question: "أي من هذه الكلمات تبدأ بحرف اللام (ل)؟", options: ["ليمون", "ملعب", "جمل", "نمل"], answer: "ليمون", hint: "كلمة ليمون تبدأ باللام." },
-                    { question: "نستخدم ضمير المتكلم (أنا) لـ:", options: ["المفرد المذكر والمؤنث", "الجمع فقط", "المثنى فقط", "الغائب"], answer: "المفرد المذكر والمؤنث", hint: "أنا أكتب، أنا أقرأ." },
-                    { question: "كلمة (معلم) تدل على:", options: ["مذكر", "مؤنث", "جمع", "حرف"], answer: "مذكر", hint: "المعلم شخص مذكر." },
-                    { question: "حرف الجر في جملة (أنا أذهب إلى المدرسة):", options: ["أنا", "أذهب", "إلى", "المدرسة"], answer: "إلى", hint: "كلمة إلى هي حرف جر." },
-                    { question: "ما هو نقيض كلمة (نظيف)؟", options: ["جميل", "متسخ", "سريع", "كبير"], answer: "متسخ", hint: "عكس نظيف هو متسخ." },
-                    { question: "جمع كلمة (طالب):", options: ["طلاب", "طلاب ومكتب", "مكتبة", "كتاب"], answer: "طلاب", hint: "جمع طالب هو طلاب." },
-                    { question: "ما هو الحرف الأول في كلمة (قلم)؟", options: ["ق", "ل", "م", "ب"], answer: "ق", hint: "تبدأ بحرف القاف." },
-                    { question: "أي الكلمات الآتية تحتوى على حرف الهاء (هـ)؟", options: ["هدهد", "أسد", "قلم", "تفاح"], answer: "هدهد", hint: "كلمة هدهد فيها حرف الهاء." }
+                    { question: "الحرف الذي يأتي بعد حرف (ب) هو:", options: ["أ", "ج", "ت", "ث"], answer: "ت", hint: "الترتيب: أ، ب، ت، ث." }
                 ]
             },
             animals: {
@@ -390,24 +607,7 @@
                 questions: [
                     { question: "من هو ملك الغابة القوي؟", options: ["الفيل", "الأسد", "القرود", "الزرافة"], answer: "الأسد", hint: "هو الأسد الشجاع." },
                     { question: "حيوان طويل جداً وله رقبة طويلة يأكل أوراق الشجر:", options: ["الزرافة", "الحصان", "الأرنب", "القطة"], answer: "الزرافة", hint: "إنها الزرافة الجميلة." },
-                    { question: "حيوان قفاز يحب أكل الجزر:", options: ["الكلب", "الأرنب", "الأسد", "السمكة"], answer: "الأرنب", hint: "إنه الأرنب الصغير." },
-                    { question: "ما هو الحيوان الذي يعيش في الماء ويقوم بعمل أصوات فقاعات؟", options: ["السمكة", "العصفور", "الأسد", "النمر"], answer: "السمكة", hint: "السمكة تعيش في الماء." },
-                    { question: "حيوان ضخم جداً وله زلومة طويلة:", options: ["الفيل", "القط", "الكلب", "الدجاجة"], answer: "الفيل", hint: "إنه الفيل الكبير." },
-                    { question: "ما هو الحيوان الذي يعطينا الحليب واللبن المفيد؟", options: ["البقرة", "الأسد", "النمر", "السمك"], answer: "البقرة", hint: "البقرة تعطينا اللبن." },
-                    { question: "من هو أسرع حيوان بري في العالم؟", options: ["الفهد", "السلحفاة", "الفيل", "الدب"], answer: "الفهد", hint: "إنه الفهد السريع." },
-                    { question: "أي من هذه الطيور لا يستطيع الطيران ولكنه يعوم بمهارة في الثلج؟", options: ["البطريق", "العصفور", "الحمام", "النسر"], answer: "البطريق", hint: "إنه البطريق اللطيف." },
-                    { question: "ما هو الحيوان الذي يبنى بيته (الشبكة) لكي يصطاد طعامه؟", options: ["العنكبوت", "النحلة", "النملة", "الكلب"], answer: "العنكبوت", hint: "العنكبوت يبني شبكة خيوط." },
-                    { question: "حيوان أليف يحرس المنزل ويقول (هوه هوه):", options: ["القط", "الكلب", "العصفور", "الخروف"], answer: "الكلب", hint: "إنه الكلب الوفي." },
-                    { question: "حيوان أليف يقول (مياو مياو) ويحب اللبن:", options: ["القطة", "الأسد", "الحصان", "الذئب"], answer: "القطة", hint: "إنها القطة الأليفة." },
-                    { question: "حيوان يعيش في الصحراء ويتحمل العطش وله سنام:", options: ["الجمل", "الفيل", "البطريق", "الدب القطبي"], answer: "الجمل", hint: "هو سفينة الصحراء الجمل." },
-                    { question: "حشرة نشيطة جداً تجمع العسل وتصنعه لنا:", options: ["النحلة", "الذباب", "البعوض", "الفراشة"], answer: "النحلة", hint: "إنها النحلة النافعة." },
-                    { question: "حيوان ضخم يعيش في الماء وله فم كبير جداً ويسمى سيد قشطة:", options: ["فرس النهر", "الكلب", "القط", "الزرافة"], answer: "فرس النهر", hint: "فرس النهر يعيش قرب الماء." },
-                    { question: "ما هو الحيوان الذي يغير لون جسمه ليختبئ من الأعداء؟", options: ["الحرباء", "الأسد", "الأرنب", "الكلب"], answer: "الحرباء", hint: "الحرباء تتلون بألوان البيئة." },
-                    { question: "طيور جميلة تغرد فوق الشجر وتطير في السماء:", options: ["العصافير", "الأسود", "الفيلة", "الأسماك"], answer: "العصافير", hint: "العصافير صوتها جميل." },
-                    { question: "حيوان يغطي جسمه صوف ناعم ويعطينا الصوف لنصنع الملابس:", options: ["الخروف", "الكلب", "القط", "النمر"], answer: "الخروف", hint: "إنه الخروف الطيب." },
-                    { question: "من هو الحيوان الذي يُلقب بسفينة الصحراء؟", options: ["الجمل", "الحصان", "الحمار", "الفيل"], answer: "الجمل", hint: "الجمل يسافر في الصحراء." },
-                    { question: "حيوان بطيء جداً وله صدفة قوية يحتمي بها على ظهره:", options: ["السلحفاة", "الأرنب", "الفهد", "الغزال"], answer: "السلحفاة", hint: "إنها السلحفاة البطيئة." },
-                    { question: "ما هو الحيوان الذي يعيش في القطب الشمالي ويحب الجليد والثلج؟", options: ["الدب القطبي", "الأسد", "القرد", "الفيل"], answer: "الدب القطبي", hint: "الدب القطبي يحب البرد والثلج." }
+                    { question: "حيوان قفاز يحب أكل الجزر:", options: ["الكلب", "الأرنب", "الأسد", "السمكة"], answer: "الأرنب", hint: "إنه الأرنب الصغير." }
                 ]
             },
             smart: {
@@ -415,24 +615,7 @@
                 questions: [
                     { question: "كم عدد أيام الأسبوع؟", options: [5, 6, 7, 8], answer: 7, hint: "السبت، الأحد، الإثنين، الثلاثاء، الأربعاء، الخميس، الجمعة (7 أيام)." },
                     { question: "ما هو لون السماء في الصباح الصافي؟", options: ["أحمر", "أزرق", "أسود", "أخضر"], answer: "أزرق", hint: "السماء صافية ولونها أزرق جميل." },
-                    { question: "في أي دولة عربية جميلة نعيش؟", options: ["مصر", "فرنسا", "اليابان", "إيطاليا"], answer: "مصر", hint: "نحن في أم الدنيا مصر!" },
-                    { question: "كم عدد أصابع اليد الواحدة؟", options: [3, 4, 5, 10], answer: 5, hint: "عد أصابع إيدك هتلاقيهم 5." },
-                    { question: "ما هو الفصل الذي تكون فيه الشمس حارة جداً ونذهب للشاطئ؟", options: ["الشتاء", "الصيف", "الربيع", "الخريف"], answer: "الصيف", hint: "إنه فصل الصيف الحار." },
-                    { question: "كم عدد فصول السنة الأربعة؟", options: [2, 3, 4, 5], answer: 4, hint: "الربيع، الصيف، الخريف، الشتاء (4 فصول)." },
-                    { question: "ما هو لون اللبن الطبيعي؟", options: ["أبيض", "أسود", "أحمر", "أزرق"], answer: "أبيض", hint: "اللبن لونه زاهي وأبيض." },
-                    { question: "ما هو الكوكب الذي نعيش عليه؟", options: ["الأرض", "المريخ", "زحل", "المشترى"], answer: "الأرض", hint: "كوكب الأرض هو بيتنا." },
-                    { question: "ما هو العضو المسؤول عن رؤية الأشياء في جسم الإنسان؟", options: ["العين", "الأذن", "الأنف", "الفم"], answer: "العين", hint: "نحن نرى بعيوننا." },
-                    { question: "ما هو العضو المسؤول عن سماع الأصوات؟", options: ["الأذن", "العين", "اليد", "الرجل"], answer: "الأذن", hint: "نحن نسمع بآذاننا." },
-                    { question: "كم عدد عيون الإنسان؟", options: [1, 2, 3, 4], answer: 2, hint: "عندنا عينين اثنتين." },
-                    { question: "في أي وقت تشرق الشمس؟", options: ["الصباح", "الليل", "المساء", "منتصف الليل"], answer: "الصباح", hint: "الشمس تشرق كل صباح." },
-                    { question: "ما هو الشيء الذي ينور لنا في الليل بالسماء؟", options: ["القمر", "الشمس", "السيارة", "الشجرة"], answer: "القمر", hint: "القمر ينير لنا الليل." },
-                    { question: "كم عدد ألوان علم مصر الحبيب؟", options: [2, 3, 4, 5], answer: 3, hint: "أحمر، أبيض، أسود (3 ألوان وفي المنتصف النسر)." },
-                    { question: "ما هو الفصل الذي تتساقط فيه أوراق الشجر وتشتد الرياح؟", options: ["الخريف", "الربيع", "الصيف", "الشتاء"], answer: "الخريف", hint: "إنه فصل الخريف." },
-                    { question: "ما هو الحيوان المائي الضخم الذي يخرج ماء من ظهره ويعد أضخم كائنات البحر؟", options: ["الحوت الأزرق", "السمكة", "السلحفاة", "الضفدعة"], answer: "الحوت الأزرق", hint: "الحوت الأزرق هو الأضخم." },
-                    { question: "أي وسيلة تنقل تسير على السكك الحديدية (القضبان)؟", options: ["القطار", "الطيارة", "السيارة", "المركب"], answer: "القطار", hint: "القطار يسير على قضبان السكة الحديد." },
-                    { question: "ما هو الشيء الذي نستخدمه عندما تمطر السماء لنحمي نفسنا من المطر؟", options: ["الشمسية (المظلة)", "الكتاب", "القلم", "الحقيبة"], answer: "الشمسية (المظلة)", hint: "نستخدم الشمسية في المطر." },
-                    { question: "ما هي عاصمة جمهورية مصر العربية؟", options: ["القاهرة", "الإسكندرية", "أسوان", "الجيزة"], answer: "القاهرة", hint: "القاهرة هي عاصمة مصر." },
-                    { question: "كم عدد أرجل الحشرات مثل النحلة والنملة؟", options: [2, 4, 6, 8], answer: 6, hint: "الحشرات لها 6 أرجل." }
+                    { question: "في أي دولة عربية جميلة نعيش؟", options: ["مصر", "فرنسا", "اليابان", "إيطاليا"], answer: "مصر", hint: "نحن في أم الدنيا مصر!" }
                 ]
             }
         };
@@ -450,8 +633,7 @@
             sessionCoins = 0;
             currentLives = 3;
 
-            document.getElementById('screenHome').classList.add('hidden');
-            document.getElementById('screenVictory').classList.add('hidden');
+            hideAllScreens();
             document.getElementById('screenGame').classList.remove('hidden');
             document.getElementById('screenGame').classList.add('flex');
 
@@ -469,40 +651,33 @@
 
             const q = cat.questions[currentQuestionIndex];
             document.getElementById('currentQNum').innerText = (currentQuestionIndex + 1) + ' / ' + cat.questions.length;
-            
             const progressPct = ((currentQuestionIndex + 1) / cat.questions.length) * 100;
             document.getElementById('progressBar').style.width = progressPct + '%';
 
             document.getElementById('questionArea').innerText = q.question;
             document.getElementById('feedbackMsg').innerHTML = '';
-
-            playSpeech(q.question);
+            playSpeech(q.question, 'ar-EG');
 
             const grid = document.getElementById('optionsGrid');
             grid.innerHTML = '';
-
             const shuffled = [...q.options].sort(() => Math.random() - 0.5);
 
             shuffled.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = "py-3 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-900 font-black text-base md:text-xl rounded-2xl shadow-md border-3 border-white transform hover:scale-105 active:scale-95 transition cursor-pointer";
                 btn.innerText = opt;
-                btn.onclick = function() {
-                    checkAnswer(opt, q.answer, q.hint, btn);
-                };
+                btn.onclick = () => checkAnswer(opt, q.answer, q.hint, btn);
                 grid.appendChild(btn);
             });
         }
 
         function checkAnswer(selected, correct, hint, btnElement) {
             const feedback = document.getElementById('feedbackMsg');
-
             if (selected === correct) {
                 btnElement.classList.remove('from-amber-400', 'to-amber-500');
                 btnElement.classList.add('from-emerald-500', 'to-green-600', 'text-white');
-                
-                feedback.innerHTML = '<span class="text-emerald-600 text-sm md:text-base font-black">⭐ برافو عليك! إجابة صحيحة</span>';
-                playSpeech("برافو عليك! إجابة صحيحة");
+                feedback.innerHTML = '<span class="text-emerald-600 font-black">⭐ برافو عليك! إجابة صحيحة</span>';
+                playSpeech("برافو عليك! إجابة صحيحة", 'ar-EG');
 
                 gameData.stars += 1;
                 gameData.coins += 10;
@@ -511,90 +686,275 @@
                 saveGame();
                 updateGlobalUI();
 
-                disableOptions();
-                setTimeout(function() {
-                    currentQuestionIndex++;
-                    loadQuestion();
-                }, 1400);
-
+                document.querySelectorAll('#optionsGrid button').forEach(b => b.disabled = true);
+                setTimeout(() => { currentQuestionIndex++; loadQuestion(); }, 1400);
             } else {
                 btnElement.classList.add('shake', 'bg-rose-500', 'text-white');
-                playSpeech("حاول مرة أخرى");
-                
+                playSpeech("حاول مرة أخرى", 'ar-EG');
                 currentLives = Math.max(0, currentLives - 1);
                 document.getElementById('gameLives').innerText = currentLives;
-
                 feedback.innerHTML = `<span class="text-rose-600 font-bold text-xs">💡 ${hint}</span>`;
-
-                setTimeout(function() {
-                    btnElement.classList.remove('shake', 'bg-rose-500', 'text-white');
-                }, 400);
+                setTimeout(() => btnElement.classList.remove('shake', 'bg-rose-500', 'text-white'), 400);
 
                 if (currentLives === 0) {
-                    setTimeout(function() {
-                        openModal('خلصت المحاولات 😅', 'ولا يهمك يا بطل، جرب تاني وهتكسب!');
-                        returnToHome();
-                    }, 800);
+                    setTimeout(() => { openModal('خلصت المحاولات 😅', 'ولا يهمك يا بطل، جرب تاني وهتكسب!'); returnToHome(); }, 800);
                 }
             }
         }
 
-        function disableOptions() {
-            const buttons = document.querySelectorAll('#optionsGrid button');
-            buttons.forEach(function(b) {
-                b.disabled = true;
+        function endGame() {
+            hideAllScreens();
+            document.getElementById('screenVictory').classList.remove('hidden');
+            document.getElementById('screenVictory').classList.add('flex');
+            document.getElementById('finalStars').innerText = `+${sessionStars} نجوم`;
+            document.getElementById('finalCoins').innerText = `+${sessionCoins} عملة`;
+            playSpeech("أحسنت يا بطل! لقد أنهيت المغامرة بنجاح.", 'ar-EG');
+        }
+
+
+        // ================= 2. منطق أقسام الروضة (عربي) =================
+        let currentNum = 1;
+        const numberWords = { 1: "واحد", 2: "اتنين", 3: "تلاتة", 4: "أربعة", 5: "خمسة", 6: "ستة", 7: "سبعة", 8: "ثمانية", 9: "تسعة", 10: "عشرة" };
+
+        function startNumbersScreen() {
+            hideAllScreens();
+            document.getElementById('screenNumbers').classList.remove('hidden');
+            document.getElementById('screenNumbers').classList.add('flex');
+            currentNum = 1;
+            updateNumberDisplay();
+        }
+        function changeNumber(dir) {
+            currentNum += dir;
+            if (currentNum > 100) currentNum = 100;
+            if (currentNum < 1) currentNum = 1;
+            updateNumberDisplay();
+        }
+        function updateNumberDisplay() {
+            document.getElementById('currentNumDisplay').innerText = currentNum;
+            document.getElementById('currentNumWord').innerText = numberWords[currentNum] || currentNum.toString();
+            playSpeech(currentNum.toString(), 'ar-EG');
+        }
+        function speakCurrentNumber() { playSpeech(currentNum.toString(), 'ar-EG'); }
+
+        // الحروف العربي
+        const alphabetData = [
+            { letter: "أ", word: "أَسَد 🦁", hint: "ألف أسد، ملك الغابة" },
+            { letter: "ب", word: "بَطَّة 🦆", hint: "باء بطة تسبح" },
+            { letter: "ت", word: "تُفَّاحَة 🍎", hint: "تاء تفاحة لذيذة" },
+            { letter: "ث", word: "ثُعْلَب 🦊", hint: "ثاء ثعلب ذكي" },
+            { letter: "ج", word: "جَمَل 🐪", hint: "جيم جمل سفينة الصحراء" }
+        ];
+        let currentLetterIdx = 0;
+        function startLettersScreen() {
+            hideAllScreens();
+            document.getElementById('screenLetters').classList.remove('hidden');
+            document.getElementById('screenLetters').classList.add('flex');
+            currentLetterIdx = 0;
+            updateLetterDisplay();
+        }
+        function changeLetter(dir) {
+            currentLetterIdx = (currentLetterIdx + dir + alphabetData.length) % alphabetData.length;
+            updateLetterDisplay();
+        }
+        function updateLetterDisplay() {
+            const item = alphabetData[currentLetterIdx];
+            document.getElementById('currentLetterDisplay').innerText = item.letter;
+            document.getElementById('currentLetterWord').innerText = item.word;
+            document.getElementById('currentLetterHint').innerText = item.hint;
+            playSpeech(item.letter, 'ar-EG');
+        }
+        function speakCurrentLetter() { playSpeech(alphabetData[currentLetterIdx].letter, 'ar-EG'); }
+
+        // حيوانات عربي
+        const animalsData = [
+            { emoji: "🦁", name: "الأسد", desc: "ملك الغابة القوي" },
+            { emoji: "🦒", name: "الزرافة", desc: "لها رقبة طويلة" },
+            { emoji: "🐘", name: "الفيل", desc: "حيوان ضخم بزلومة" }
+        ];
+        let currentAnimalIdx = 0;
+        function startAnimalsScreen() {
+            hideAllScreens();
+            document.getElementById('screenAnimals').classList.remove('hidden');
+            document.getElementById('screenAnimals').classList.add('flex');
+            currentAnimalIdx = 0;
+            updateAnimalDisplay();
+        }
+        function changeAnimal(dir) {
+            currentAnimalIdx = (currentAnimalIdx + dir + animalsData.length) % animalsData.length;
+            updateAnimalDisplay();
+        }
+        function updateAnimalDisplay() {
+            const anim = animalsData[currentAnimalIdx];
+            document.getElementById('currentAnimalEmoji').innerText = anim.emoji;
+            document.getElementById('currentAnimalName').innerText = anim.name;
+            document.getElementById('currentAnimalDesc').innerText = anim.desc;
+            playSpeech(anim.name, 'ar-EG');
+        }
+        function speakCurrentAnimal() { playSpeech(animalsData[currentAnimalIdx].name, 'ar-EG'); }
+
+        // لعبة التوصيل عربي
+        const matchQuestions = [
+            { q: "ما هو الحرف الأول في كلمة (أَسَد)؟", options: ["ب", "أ", "م", "ت"], answer: "أ", hint: "أسد تبدأ بالألف." },
+            { q: "من هو ملك الغابة؟", options: ["الأسد", "الفيل", "القرد", "الأرنب"], answer: "الأسد", hint: "إنه الأسد." }
+        ];
+        let matchQIndex = 0;
+        function startMatchGameScreen() {
+            hideAllScreens();
+            document.getElementById('screenMatchGame').classList.remove('hidden');
+            document.getElementById('screenMatchGame').classList.add('flex');
+            matchQIndex = 0;
+            loadMatchQuestion();
+        }
+        function loadMatchQuestion() {
+            if (matchQIndex >= matchQuestions.length) { endGame(); return; }
+            const q = matchQuestions[matchQIndex];
+            document.getElementById('matchQNum').innerText = (matchQIndex + 1) + ' / ' + matchQuestions.length;
+            document.getElementById('matchQuestionText').innerText = q.q;
+            document.getElementById('matchFeedback').innerHTML = '';
+            playSpeech(q.q, 'ar-EG');
+
+            const grid = document.getElementById('matchOptionsGrid');
+            grid.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "py-3.5 bg-gradient-to-r from-yellow-300 to-amber-400 text-slate-900 font-black text-lg rounded-2xl shadow-md border-3 border-white";
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    if(opt === q.answer) {
+                        btn.classList.add('bg-emerald-500', 'text-white');
+                        playSpeech("برافو", 'ar-EG');
+                        setTimeout(() => { matchQIndex++; loadMatchQuestion(); }, 1200);
+                    } else {
+                        btn.classList.add('bg-rose-500', 'text-white', 'shake');
+                        setTimeout(() => btn.classList.remove('shake', 'bg-rose-500', 'text-white'), 400);
+                    }
+                };
+                grid.appendChild(btn);
             });
         }
 
-        function endGame() {
-            document.getElementById('screenGame').classList.add('hidden');
-            document.getElementById('screenGame').classList.remove('flex');
-            document.getElementById('screenVictory').classList.remove('hidden');
-            document.getElementById('screenVictory').classList.add('flex');
 
-            document.getElementById('finalStars').innerText = `+${sessionStars} نجوم`;
-            document.getElementById('finalCoins').innerText = `+${sessionCoins} عملة`;
-            playSpeech("أحسنت يا بطل! لقد أنهيت المغامرة بنجاح.");
+        // ================= 3. منطق قسم تأسيس الإنجليزية (English Logic) =================
+
+        // الأرقام الإنجليزية (1-100)
+        let engNum = 1;
+        const engNumberWords = { 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten", 20: "Twenty", 30: "Thirty", 40: "Forty", 50: "Fifty", 60: "Sixty", 70: "Seventy", 80: "Eighty", 90: "Ninety", 100: "One Hundred" };
+
+        function getEngNumWord(n) {
+            if (engNumberWords[n]) return engNumberWords[n];
+            let t = Math.floor(n / 10) * 10;
+            let u = n % 10;
+            return (engNumberWords[t] || "") + "-" + (engNumberWords[u] || "");
         }
 
-        function restartCurrentCategory() {
-            startCategoryGame(activeCategory);
+        function startEngNumbersScreen() {
+            hideAllScreens();
+            document.getElementById('screenEngNumbers').classList.remove('hidden');
+            document.getElementById('screenEngNumbers').classList.add('flex');
+            engNum = 1;
+            updateEngNumDisplay();
+        }
+        function changeEngNumber(dir) {
+            engNum += dir;
+            if (engNum > 100) engNum = 100;
+            if (engNum < 1) engNum = 1;
+            updateEngNumDisplay();
+        }
+        function updateEngNumDisplay() {
+            document.getElementById('engNumDisplay').innerText = engNum;
+            let word = getEngNumWord(engNum);
+            document.getElementById('engNumWord').innerText = word;
+            playSpeech(word, 'en-US');
+        }
+        function speakEngNumber() { playSpeech(getEngNumWord(engNum), 'en-US'); }
+
+        // الحروف الإنجليزية (A-Z)
+        const engAlphabet = [
+            { l: "A a", w: "Apple 🍎", hint: "A is for Apple" },
+            { l: "B b", w: "Ball ⚽", hint: "B is for Ball" },
+            { l: "C c", w: "Cat 🐱", hint: "C is for Cat" },
+            { l: "D d", w: "Dog 🐶", hint: "D is for Dog" },
+            { l: "E e", w: "Elephant 🐘", hint: "E is for Elephant" },
+            { l: "F f", w: "Fish 🐟", hint: "F is for Fish" },
+            { l: "G g", w: "Giraffe 🦒", hint: "G is for Giraffe" },
+            { l: "H h", w: "Horse 🐴", hint: "H is for Horse" },
+            { l: "I i", w: "Ice cream 🍦", hint: "I is for Ice cream" },
+            { l: "J j", w: "Juice 🧃", hint: "J is for Juice" }
+        ];
+        let engLetterIdx = 0;
+
+        function startEngLettersScreen() {
+            hideAllScreens();
+            document.getElementById('screenEngLetters').classList.remove('hidden');
+            document.getElementById('screenEngLetters').classList.add('flex');
+            engLetterIdx = 0;
+            updateEngLetterDisplay();
+        }
+        function changeEngLetter(dir) {
+            engLetterIdx = (engLetterIdx + dir + engAlphabet.length) % engAlphabet.length;
+            updateEngLetterDisplay();
+        }
+        function updateEngLetterDisplay() {
+            const item = engAlphabet[engLetterIdx];
+            document.getElementById('engLetterDisplay').innerText = item.l;
+            document.getElementById('engLetterWord').innerText = item.w;
+            document.getElementById('engLetterHint').innerText = item.hint;
+            playSpeech(item.w, 'en-US');
+        }
+        function speakEngLetter() { playSpeech(engAlphabet[engLetterIdx].w, 'en-US'); }
+
+        // الحيوانات بالإنجليزية مع Spelling
+        const engAnimals = [
+            { emoji: "🦁", name: "Lion", spelling: "L - I - O - N", desc: "King of the Jungle" },
+            { emoji: "🐅", name: "Tiger", spelling: "T - I - G - E - R", desc: "Strong wild cat" },
+            { emoji: "🐘", name: "Elephant", spelling: "E - L - E - P - H - A - N - T", desc: "Very big animal with a trunk" },
+            { emoji: "🦒", name: "Giraffe", spelling: "G - I - R - A - F - F - E", desc: "Animal with a long neck" },
+            { emoji: "🐒", name: "Monkey", spelling: "M - O - N - K - E - Y", desc: "Loves to jump and eat bananas" },
+            { emoji: "🦊", name: "Fox", spelling: "F - O - X", desc: "Clever wild animal" },
+            { emoji: "🐼", name: "Panda", spelling: "P - A - N - D - A", desc: "Cute black and white bear" },
+            { emoji: "🐰", name: "Rabbit", spelling: "R - A - B - B - I - T", desc: "Loves eating carrots" }
+        ];
+        let engAnimalIdx = 0;
+
+        function startEngAnimalsScreen() {
+            hideAllScreens();
+            document.getElementById('screenEngAnimals').classList.remove('hidden');
+            document.getElementById('screenEngAnimals').classList.add('flex');
+            engAnimalIdx = 0;
+            updateEngAnimalDisplay();
+        }
+        function changeEngAnimal(dir) {
+            engAnimalIdx = (engAnimalIdx + dir + engAnimals.length) % engAnimals.length;
+            updateEngAnimalDisplay();
+        }
+        function updateEngAnimalDisplay() {
+            const anim = engAnimals[engAnimalIdx];
+            document.getElementById('engAnimalEmoji').innerText = anim.emoji;
+            document.getElementById('engAnimalName').innerText = anim.name;
+            document.getElementById('engAnimalSpelling').innerText = "Spelling: " + anim.spelling;
+            document.getElementById('engAnimalDesc').innerText = anim.desc;
+            playSpeech(anim.name, 'en-US');
+        }
+        function speakEngAnimal() {
+            const anim = engAnimals[engAnimalIdx];
+            playSpeech(anim.name + ". Spelling is " + anim.name.split('').join(' '), 'en-US');
         }
 
-        function returnToHome() {
-            document.getElementById('screenGame').classList.add('hidden');
-            document.getElementById('screenGame').classList.remove('flex');
-            document.getElementById('screenVictory').classList.add('hidden');
-            document.getElementById('screenVictory').classList.remove('flex');
-            document.getElementById('screenHome').classList.remove('hidden');
-            document.getElementById('screenHome').classList.add('flex');
-            updateGlobalUI();
-        }
 
-        function heroCheer() {
-            playSpeech("أنا سعيد باللعب معك جداً! اختر مغامرة لنبدأ.");
-            openModal("البطل الصغير 👦🏽", "أهلاً بك يا بطل! أنا مبسوط بوجودك، اختار أي قسم من اللعبة وحارب معانا عشان تكسب الجوائز!");
-        }
-
+        // وظائف مساعدة عامة
         function openProfile() {
-            openModal("ملف البطل 👤", `اسم البطل: البطل الصغير\nالمرحلة: الصف الأول الابتدائي\nالمستوى الحالي: ${gameData.level}\nمجموع النجوم: ${gameData.stars} ⭐\nمجموع العملات: ${gameData.coins} 🪙`);
+            openModal("ملف البطل 👤", `مجموع النجوم: ${gameData.stars} ⭐\nمجموع العملات: ${gameData.coins} 🪙`);
         }
-
         function openModal(title, desc) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = desc;
-            const modal = document.getElementById('generalModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('generalModal').classList.remove('opacity-0', 'pointer-events-none');
         }
-
         function closeModal() {
-            const modal = document.getElementById('generalModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('generalModal').classList.add('opacity-0', 'pointer-events-none');
         }
 
-        window.onload = function() {
-            loadGame();
-        };
+        window.onload = () => loadGame();
     </script>
 </body>
 </html>
